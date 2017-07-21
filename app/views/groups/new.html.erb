@@ -1,12 +1,16 @@
 <!-- GROUPS -->
+<h1>Create group</h1>
 <p>
-	user: <%= @user.email %> 
+	<strong>User:</strong> <%= @user.email %> 
 </p>
-<strong>Create group</strong>
+
 <%= form_for @group do |f|%>
 	<p>
 		<%= f.label :Name %>
 		<%= f.text_field :name %>
+		<%= f.submit "Create"%>
 	</p>
-	<%= f.submit "Create"%>
 <% end %>
+<p>
+	<%= link_to 'Back', user_path(@user)%>
+</p>

@@ -1,17 +1,23 @@
 <!-- USERS -->
+<h1>User</h1>
 <p>
-	User: <%= @user.email %> 
+	<strong>Email:</strong> <%= @user.email %> 
 </p>
-<p>
-	Groups <%= link_to 'Create', new_group_path%>
-</p>
-<p>
-	<% @user.groups.each do |group|%>
-		<p>
-			<%= group.name %> 
-			<%= link_to 'View', edit_group_path(group)%>
-			<!-- TODO add link to leave group -->
-		</p>
-	<% end %>
-</p>
+
+<table>
+	<tr>
+		<th>Group</th>
+		<th><%= link_to 'View all', groups_path %></th>
+		<th><%= link_to 'Create', new_group_path%></th>
+	</tr>
+	<tr>
+		<% @user.groups.each do |group|%>
+			<tr>
+				<td><%= group.name %></td>
+				<td><%= link_to 'View', group_path(group)%></td>
+				<!-- TODO add link to leave group -->
+			</tr>
+		<% end %>
+	</tr>
+</table>
 

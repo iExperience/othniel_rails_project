@@ -1,15 +1,16 @@
 <!-- GROUPS -->
+<h1>Forum</h1>
 <p>
-	Group: <%= @group.name %>
+	<strong>User:</strong> <%= @user.email%><br>
+	<strong>Group:</strong> <%= @group.name %>
 </p>
 <p>
-	<% @group.comments.each do |comment|%>
-		<p>
-			<%= comment.user %> 
-			<%= comment.text %>
-		</p>
-	<% end %>
+	<strong>Groups:</strong> 
+	<%= render @group.comments %>
 </p>
 <p>
-	<%= link_to 'back', user_path%>
+	<%= render 'comments/form' %>
+</p>
+<p>
+	<%= link_to 'Back', user_path(@user)%>
 </p>

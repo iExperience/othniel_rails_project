@@ -1,3 +1,4 @@
 <p>
-	<% comment.message %>
+	<%= User.find(comment.user_id)[:email] %> :
+	<%= comment.message %>
 </p>
