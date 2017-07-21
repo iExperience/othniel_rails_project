@@ -1,0 +1,15 @@
+<!-- GROUPS -->
+<p>
+	Group: <%= @group.name %>
+</p>
+<p>
+	<% @group.comments.each do |comment|%>
+		<p>
+			<%= comment.user %> 
+			<%= comment.text %>
+		</p>
+	<% end %>
+</p>
+<p>
+	<%= link_to 'back', user_path%>
+</p>

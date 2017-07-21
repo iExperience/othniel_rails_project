@@ -1,0 +1,6 @@
+<%= form_for ([@group, @group.comments.build]) do |f| %>
+<p>
+	<%= f.text_area :message %> 
+	<%= f.submit "Send" %>
+</p>
+<% end %>

@@ -1,0 +1,17 @@
+<!-- USERS -->
+<p>
+	User: <%= @user.email %> 
+</p>
+<p>
+	Groups <%= link_to 'Create', new_group_path%>
+</p>
+<p>
+	<% @user.groups.each do |group|%>
+		<p>
+			<%= group.name %> 
+			<%= link_to 'View', edit_group_path(group)%>
+			<!-- TODO add link to leave group -->
+		</p>
+	<% end %>
+</p>
+
