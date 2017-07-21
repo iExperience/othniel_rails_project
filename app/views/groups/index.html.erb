@@ -7,15 +7,31 @@
 	<tr>
 		<% @groups.each do |group| %>
 			<% membership =  Membership.find_by(group_id: group[:id])%>
+			<% admin = membership && membership[:admin] && membership[:user_id] == session[:user_id]%>
+			<% member = membership && membership[:user_id] == session[:user_id]%>
 			<tr>
 				<td><%= group.name %></td>
 				<td>
-					<% if membership && membership[:admin] %>
-						admin
+					<% if admin%>
+						you
+					<% else %>
+					<%= User.find(membership[:user_id])[:email]%>
 					<% end %>
 				</td>
-				<td><%= link_to 'view', group_path(group)%></td>
-				<td><%= link_to 'leave'%></td>
+				<td>
+					<% if member %>
+						<%= link_to 'view', group_path(group)%>	
+					<% else %>
+						<%= link_to 'join', new_group_membership_path(group)%>
+						<% session[:group_id] = group[:id] %>
+						<!--<% Membership.create(user_id: :user_id, group_id: group[:id], admin: false) %>-->
+					<% end %>
+				</td>
+				<td>
+					<% if member %>
+						<%= link_to 'leave'%> 
+					<% end %>
+				</td>
 			</tr>
 	<% end %>
 	</tr>
