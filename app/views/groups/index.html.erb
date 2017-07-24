@@ -22,8 +22,9 @@
 					<% if member %>
 						<%= link_to 'view', group_path(group)%>	
 					<% else %>
-						<%= link_to 'join', new_group_membership_path(group)%>
+						<!-- TODO create  membership with admin=false when user click on join-->
 						<% session[:group_id] = group[:id] %>
+						<%= link_to 'join', group_path(group), controller: :memberships, action: :new %>
 						<!--<% Membership.create(user_id: :user_id, group_id: group[:id], admin: false) %>-->
 					<% end %>
 				</td>

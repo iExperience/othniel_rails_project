@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 	resources :groups, concerns: :commentable
 	
 	match '/logout', to: 'sessions#destroy', via: 'delete'
+	#match '/join', to: 'memberships#join', via: 'post'
 
 	root "sessions#new"
 
